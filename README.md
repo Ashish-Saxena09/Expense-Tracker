@@ -9,6 +9,7 @@ A simple expense tracker made with React and Redux Toolkit.
 * Delete an expense
 * Clear all expenses
 * Calculate total expenses
+* Search functionality
 
 ## Technologies Used
 

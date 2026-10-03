@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteExpenses } from "../Toolkit/createSlice";
 
-
 export default function List() {
   const Expenses = useSelector((state) => state.Expense.expenses);
+   const filteredExpenses = useSelector(
+     (state) => state.Expense.filteredExpenses,
+   );
+
   const dispatch = useDispatch();
   const Total = Expenses.reduce((sum, expense) => {
     return sum + expense.amount;
   }, 0);
   return (
     <div className="expenseList">
-      {Expenses.map((expense) => (
+      {filteredExpenses.map((expense) => (
         <div key={expense.id}>
           <p>{expense.name}</p>
           <p>{expense.amount}</p>

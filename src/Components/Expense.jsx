@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addExpenses, clearExpense } from "../Toolkit/createSlice";
+import {
+  addExpenses,
+  clearExpense,
+  searchExpense,
+} from "../Toolkit/createSlice";
 
 export default function Expense() {
+  const [search, setSearch] = useState("");
   const [expenseName, setExpenseName] = useState("");
   const [amount, setAmount] = useState("");
   const dispatch = useDispatch();
   return (
     <div>
       <h1>Expense Tracker</h1>
+      <input
+        type="text"
+        placeholder="Search 🔍"
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          dispatch(searchExpense(e.target.value));
+        }}
+      />
       <input
         type="text"
         placeholder="Expense Name"
